@@ -1,0 +1,23 @@
+name: Update FX Rates
+
+on:
+  schedule:
+    - cron: '0/5 * * * *'  
+  workflow_dispatch:  
+
+jobs:
+  update_rates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        env:
+          GIST_TOKEN: "${{ secrets.GIST_TOKEN }}"
+          SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
+        run: python main.py
