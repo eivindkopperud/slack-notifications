@@ -13,7 +13,7 @@ def get_latest_value_seb():
     return None
 
 
-def get_payload(new_value, old_value):
+def get_payload(old_value, new_value):
     if float(new_value) > float(old_value):
         payload = {
             "text": f":chart_with_upwards_trend: *SWAP Rate har endret seg*\nGammel verdi: {old_value}\nNy verdi: {new_value}"

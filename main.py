@@ -61,7 +61,7 @@ def fetch_and_update_data(source):
     last_value, _ = get_gist_data(f"rates_{source}.txt")
 
     if str(latest_value) != str(last_value):
-        print(f"Ny verdi funnet: endret fra {latest_value} til {latest_value}")
+        print(f"Ny verdi funnet: endret fra {last_value} til {latest_value}")
         update_gist(latest_value, f"rates_{source}.txt", )
         send_slack_notification(latest_value, last_value, source)
     else:
