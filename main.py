@@ -6,7 +6,7 @@ import datetime
 import finansportalen
 import seb
 
-gist_url = "https://api.github.com/gists/52a8f1d35abbefdeae6a57071cee6512"
+gist_url = "https://api.github.com/gists/4d17720b7a328e065b73e08780fa946f"
 gist_token = os.getenv("GIST_TOKEN")
 slack_webhook_url = os.getenv("SLACK_WEBHOOK_URL")
 
