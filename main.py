@@ -70,11 +70,12 @@ def fetch_and_update_data(source):
 
 
 def main():
-    fetch_and_update_data("seb")
-    fetch_and_update_data("finansportalen")
+    #fetch_and_update_data("seb")
+    #fetch_and_update_data("finansportalen")
 
-    #nordnet = NordnetAPIWrapper()
-    #stock = nordnet.get_stock_data()
+    nordnet = NordnetAPIWrapper()
+    stock = nordnet.get_upcoming_week()
+    #additional_data = nordnet.get_additional_data()
 
 
 if __name__ == "__main__":
