@@ -6,9 +6,7 @@ def get_latest_value_seb():
     for row in data['rows']:
         maturity = row['data'][0]['value']
         value = row['data'][1]['value']
-        decimals = row['data'][1]['decimals']
-        diff = row['data'][2]['value']
-        if maturity == "10 Yr" and decimals == 2 and diff == 0.0:
+        if maturity == "10 Yr":
             return value
     return None
 
