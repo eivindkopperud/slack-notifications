@@ -2,9 +2,9 @@ import requests
 
 def process_data(data):
     processed_data = []
-    for row in data['data']:
+    for row in data:
         try:
-            rate = row['effektivRente'].replace(",",".")
+            rate = row['effectiveInterestRate']
             processed_data.append(rate)
         except:
             print("Failed to process row: {}".format(row))
@@ -15,7 +15,7 @@ def sort_data(data):
     return sorted(data, reverse=False)
 
 def get_latest_value_finansportalen():
-    response = requests.get("https://www.finansportalen.no/services/kalkulator/boliglan?alderstilbudAr=45&fastrente_6_10=ja&kalkulatortype=laan&kjopesum=3000000&laan_type=bolig&lanebelop=1500000&lopetidtermin_value=30&nasjonalt=ja&neiforutsettermedlemskap=ja&rente=fastrente_rente&rentetakIgnore=ja&standardlan=ja&visProduktpakker=ja&visUtenProduktpakker=ja")
+    response = requests.get("https://finans-api.forbrukerradet.no/bankprodukt/boliglan?age=45&fixedInterestRateYear[0]=fastrente_over_9&interestType=Fast&isSalaryRequired=true&loanAmount=1500000&loanType[0]=standardl%C3%A5n&marketRegion[0]=NationWide&membershipType[0]=None&membershipType[1]=HousingAssociation&paymentPeriod=30&purchasePrice=3000000&query=&requiredProductTypes[0]=None")
     data = response.json()
     processed_data = process_data(data)
     sorted_data = sort_data(processed_data)
