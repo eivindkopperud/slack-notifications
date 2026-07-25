@@ -58,10 +58,21 @@ def fetch_and_update_data(source):
         print(f"Fant ingen gyldige verdier for {source}")
         return
 
-    last_value, _ = get_gist_data(f"rates_{source}.txt")
+    last_value, last_updated = get_gist_data(f"rates_{source}.txt")
+
+    updated_today = False
+    if last_updated:
+        try:
+            updated_today = datetime.datetime.fromisoformat(last_updated).date() == datetime.date.today()
+        except ValueError:
+            print(f"Kunne ikke tolke last_updated: {last_updated}")
 
     if str(latest_value) != str(last_value):
         print(f"Ny verdi funnet: endret fra {last_value} til {latest_value}")
+        update_gist(latest_value, f"rates_{source}.txt", )
+        send_slack_notification(latest_value, last_value, source)
+    elif not updated_today:
+        print(f"Ingen endring, men data er ikke oppdatert i dag. Viser nyeste verdi: {latest_value}")
         update_gist(latest_value, f"rates_{source}.txt", )
         send_slack_notification(latest_value, last_value, source)
     else:
