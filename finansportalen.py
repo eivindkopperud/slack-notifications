@@ -29,8 +29,12 @@ def get_payload(old_value, new_value):
         payload = {
             "text": f":chart_with_upwards_trend: *Finansportalen har endret seg*\nGammel verdi: {old_value}\nNy verdi: {new_value}"
         }
-    else:
+    elif sum_new < sum_old:
         payload = {
             "text": f":chart_with_downwards_trend: *Finansportalen har endret seg*\nGammel verdi: {old_value}\nNy verdi: {new_value}"
+        }
+    else:
+        payload = {
+            "text": f" *Finansportalen *\n: Midlertidig verdi: {new_value}"
         }
     return payload
