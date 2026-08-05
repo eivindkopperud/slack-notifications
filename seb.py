@@ -12,12 +12,18 @@ def get_latest_value_seb():
 
 
 def get_payload(old_value, new_value):
-    if float(new_value) > float(old_value):
+    sum_old = float(old_value)
+    sum_new = float(new_value)
+    if sum_new > sum_old:
         payload = {
             "text": f":chart_with_upwards_trend: *SWAP Rate har endret seg*\nGammel verdi: {old_value}\nNy verdi: {new_value}"
         }
-    else:
+    elif sum_new < sum_old:
         payload = {
             "text": f":chart_with_downwards_trend: *SWAP Rate har endret seg*\nGammel verdi: {old_value}\nNy verdi: {new_value}"
+        }
+    else:
+        payload = {
+            "text": f" *SWAP Rate*\n Midlertidig verdi: {new_value}"
         }
     return payload
