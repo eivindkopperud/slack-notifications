@@ -5,6 +5,7 @@ import datetime
 
 import finansportalen
 import seb
+from nordnet.wrapper import NordnetAPIWrapper
 
 gist_url = "https://api.github.com/gists/4d17720b7a328e065b73e08780fa946f"
 gist_token = os.getenv("GIST_TOKEN")
@@ -80,8 +81,12 @@ def fetch_and_update_data(source):
 
 
 def main():
-    fetch_and_update_data("seb")
-    fetch_and_update_data("finansportalen")
+    #fetch_and_update_data("seb")
+    #fetch_and_update_data("finansportalen")
+
+    nordnet = NordnetAPIWrapper()
+    stock = nordnet.get_upcoming_week()
+    #additional_data = nordnet.get_additional_data()
 
 
 if __name__ == "__main__":
