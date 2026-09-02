@@ -10,7 +10,7 @@ export TZ="Europe/Oslo"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define paths relative to the script directory
-PATH_TO_PYTHON="/usr/bin/python3"                # Or path to virtualenv python: "$SCRIPT_DIR/venv/bin/python"
+PATH_TO_PYTHON="$SCRIPT_DIR/.venv/bin/python"
 PATH_TO_SCRIPT="$SCRIPT_DIR/main.py"
 LOG_FILE="$SCRIPT_DIR/cron.log"
 

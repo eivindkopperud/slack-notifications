@@ -5,6 +5,7 @@
 
 # Locally stored rate history
 data/
+cron.log
 
 # Python
 __pycache__/
